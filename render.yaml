@@ -2,7 +2,7 @@ services:
   - type: web
     name: aischool
     env: node
-    buildCommand: npm run render-build
+    buildCommand: npm install && npm run build
     startCommand: npm start
     envVars:
       - key: NODE_ENV
@@ -15,11 +15,9 @@ services:
         value: your-nextauth-secret-here
       - key: NEXTAUTH_URL
         value: https://aischool.onrender.com
-      - key: ZAI_API_KEY
-        value: your-z-ai-api-key-here
     healthCheck:
-      path: /api/health
-      initialDelaySeconds: 60
+      path: /
+      initialDelaySeconds: 30
       timeoutSeconds: 10
       periodSeconds: 30
       failureThreshold: 5
