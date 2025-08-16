@@ -19,7 +19,7 @@ export default function SignIn() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full space-y-8 p-8">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrapold text-gray-900">
+          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Sign in to your account
           </h2>
         </div>
@@ -30,7 +30,7 @@ export default function SignIn() {
               <div key={provider.name}>
                 <button
                   onClick={() => signIn(provider.id, { callbackUrl: '/' })}
-                  className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+                  className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-text-gray-700 bg-white hover:bg-gray-50"
                 >
                   Sign in with {provider.name}
                 </button>
@@ -39,5 +39,5 @@ export default function SignIn() {
         </div>
       </div>
     </div>
-  </div>
+  )
 }
