@@ -2,8 +2,8 @@ services:
   - type: web
     name: aischool
     env: node
-    # Updated build command to include Prisma client generation
-    buildCommand: npm install && npm run db:generate && npm run build
+    # Use the custom build script
+    buildCommand: npm run render-build
     startCommand: npm start
     envVars:
       - key: NODE_ENV
