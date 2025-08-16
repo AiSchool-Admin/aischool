@@ -2,7 +2,9 @@ services:
   - type: web
     name: aischool
     env: node
-    buildCommand: npm install && npm run build
+    # هذا الأمر سيقوم بتثبيت الحزم ثم تشغيل السكريبت المخصص للبناء
+    buildCommand: npm install && npm run render-build
+    # سيقوم Render بتشغيل هذا الأمر بعد البناء لبدء التطبيق
     startCommand: npm start
     envVars:
       - key: NODE_ENV
