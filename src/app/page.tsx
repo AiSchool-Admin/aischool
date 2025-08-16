@@ -1,10 +1,11 @@
 // src/app/page.tsx
-import Link from 'next/link'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+'use client'
 
-export default async function Home() {
-  const session = await getServerSession(authOptions)
+import Link from 'next/link'
+import { useSession } from 'next-auth/react'
+
+export default function Home() {
+  const { data: session } = useSession()
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -20,7 +21,7 @@ export default async function Home() {
               {session ? (
                 <div className="flex items-center space-x-4">
                   <span className="text-sm text-gray-700">
-                    Welcome, {session.user.name}!
+                    Welcome, {session.user?.name}!
                   </span>
                   <Link
                     href="/api/auth/signout"
@@ -39,7 +40,7 @@ export default async function Home() {
                   </Link>
                   <Link
                     href="/setup-db"
-                    className="text-sm text-gray-500 hover:text-gray-700
+                    className="text-sm text-gray-500 hover:text-gray-700"
                   >
                     Setup Database
                   </Link>
@@ -66,7 +67,7 @@ export default async function Home() {
       </main>
 
       <footer className="bg-white shadow-sm">
-        <div className="max-w-7d7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="py-4">
             <p className="text-center text-sm text-gray-500">
               © {new Date().getFullYear()} AiSchool. All rights reserved.

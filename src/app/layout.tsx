@@ -1,9 +1,6 @@
+// src/app/layout.tsx
+import { SessionProvider } from 'next-auth/react'
 import './globals.css'
-
-export const metadata = {
-  title: 'AiSchool - منصة التعليم الذكي',
-  description: 'منصة تعليمية ذكية تستخدم الذكاء الاصطناعي',
-}
 
 export default function RootLayout({
   children,
@@ -11,8 +8,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ar">
-      <body>{children}</body>
+    <html lang="en">
+      <body>
+        <SessionProvider>
+          {children}
+        </SessionProvider>
+      </body>
     </html>
   )
 }
