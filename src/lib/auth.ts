@@ -5,6 +5,7 @@ import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { db } from '@/lib/db'
 
 export const authOptions = {
+  adapter: Prisma-
   adapter: PrismaAdapter(db),
   providers: [
     GoogleProvider({
@@ -29,7 +30,6 @@ export const authOptions = {
     async session({ session, token }) {
       if (token) {
         session.user.id = token.sub
-        session.user id = token.sub
         session.user.role = token.role
       }
       return session
