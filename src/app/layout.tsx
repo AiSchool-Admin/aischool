@@ -1,5 +1,5 @@
 // src/app/layout.tsx
-import Providers from '@/components/SessionProvider'
+import Providers from './components/SessionProvider'
 import './globals.css'
 
 export default function RootLayout({

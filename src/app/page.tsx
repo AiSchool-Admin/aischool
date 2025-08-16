@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <header className="bg-header className="bg-white shadow-sm">
+      <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex">
@@ -34,7 +34,7 @@ export default function Home() {
                 <div className="flex items-center space-x-4">
                   <Link
                     href="/auth/signin"
-                    className="text-sm text-gray-500 hover:text-gray-700"
+                    className="text-sm text-gray-500 hover:bg-gray-700"
                   >
                     Sign in
                   </Link>
@@ -59,7 +59,7 @@ export default function Home() {
                 Welcome to AiSchool
               </h2>
               <p className="text-sm text-gray-500">
-                This is an AI-powered learning platform for students.
+                This is anAI-powered learning platform for students.
               </p>
             </div>
           </div>
