@@ -2,9 +2,7 @@ services:
   - type: web
     name: aischool
     env: node
-    # This command will install packages and then run the build script.
     buildCommand: npm install && npm run build
-    # Render will run this command after the build to start the application.
     startCommand: npm start
     envVars:
       - key: NODE_ENV
