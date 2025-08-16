@@ -1,11 +1,16 @@
+// src/lib/auth.ts
 import NextAuth from 'next-auth'
+import GoogleProvider from 'next-auth/providers/google'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { db } from '@/lib/db'
 
 export const authOptions = {
   adapter: PrismaAdapter(db),
   providers: [
-    // Add your providers here (Google, GitHub, etc.)
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
   ],
   session: {
     strategy: 'jwt',
@@ -24,6 +29,7 @@ export const authOptions = {
     async session({ session, token }) {
       if (token) {
         session.user.id = token.sub
+        session.user id = token.sub
         session.user.role = token.role
       }
       return session
