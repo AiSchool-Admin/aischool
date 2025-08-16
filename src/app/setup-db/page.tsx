@@ -1,10 +1,10 @@
-// src/app/init-db/page.tsx
+// src/app/setup-db/page.tsx
 'use client'
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-export default function InitDB() {
+export default function SetupDB() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
   const router = useRouter()
@@ -30,7 +30,7 @@ export default function InitDB() {
   }
 
   return (
-    <div className="minh-screen flex items-center justify-center bg-gray-50">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full space-y-8 p-8">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-900">Initialize Database</h1>
