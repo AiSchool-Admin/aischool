@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:generate": "prisma generate",
-    "render-build": "npm run build"
+    "db:generate": "prisma generate"
   },
   "dependencies": {
     "next": "15.3.5",
