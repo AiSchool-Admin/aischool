@@ -7,23 +7,31 @@ import { useRouter } from 'next/navigation'
 export default function SetupDB() {
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState('')
+  const [details, setDetails] = useState('')
   const router = useRouter()
 
   const initDatabase = async () => {
     setLoading(true)
+    setMessage('')
+    setDetails('')
     try {
       const response = await fetch('/api/init-db', {
         method: 'POST',
       })
       
+      const data = await response.json()
+      
       if (response.ok) {
         setMessage('Database initialized successfully!')
+        setDetails(data.message)
         setTimeout(() => router.push('/'), 2000)
       } else {
         setMessage('Failed to initialize database')
+        setDetails(data.error || 'Unknown error')
       }
     } catch (error) {
       setMessage('Error: ' + error.message)
+      setDetails('Network error or API not responding')
     } finally {
       setLoading(false)
     }
@@ -49,7 +57,8 @@ export default function SetupDB() {
         
         {message && (
           <div className={`mt-4 p-4 rounded-md ${message.includes('success') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-            {message}
+            <div className="font-medium">{message}</div>
+            {details && <div className="text-sm mt-1">{details}</div>}
           </div>
         )}
       </div>
