@@ -14,9 +14,9 @@ services:
       - key: NEXTAUTH_SECRET
         value: your-nextauth-secret-here
       - key: NEXTAUTH_URL
-        value: https://aischool.onrender.com
+        value: https://aischool-u7d7.onrender.com
     healthCheck:
-      path: /api/health  # Updated to match your health endpoint
+      path: /
       initialDelaySeconds: 60
       timeoutSeconds: 10
       periodSeconds: 30
