@@ -2,7 +2,6 @@ services:
   - type: web
     name: aischool
     env: node
-    # Use the custom build script
     buildCommand: npm install && npm run db:generate && npm run build
     startCommand: npm start
     envVars:
@@ -17,7 +16,7 @@ services:
       - key: NEXTAUTH_URL
         value: https://aischool.onrender.com
     healthCheck:
-      path: /
+      path: /  # Change to /api/health if you have a health endpoint
       initialDelaySeconds: 30
       timeoutSeconds: 10
       periodSeconds: 30
