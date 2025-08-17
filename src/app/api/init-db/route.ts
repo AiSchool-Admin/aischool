@@ -2,11 +2,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 
+export async function GET(request: NextRequest) {
+  return NextResponse.json({ 
+    message: 'API is working. Please use POST to initialize database.' 
+  })
+}
+
 export async function POST(request: NextRequest) {
   try {
     console.log('Starting database initialization...')
     
-    // Simple table creation without foreign keys first
+    // Create users table
     await db.$executeRaw`
       CREATE TABLE IF NOT EXISTS users (
         id TEXT PRIMARY KEY,
@@ -20,6 +26,7 @@ export async function POST(request: NextRequest) {
       )
     `
     
+    // Create accounts table
     await db.$executeRaw`
       CREATE TABLE IF NOT EXISTS accounts (
         id TEXT PRIMARY KEY,
@@ -37,6 +44,7 @@ export async function POST(request: NextRequest) {
       )
     `
     
+    // Create sessions table
     await db.$executeRaw`
       CREATE TABLE IF NOT EXISTS sessions (
         id TEXT PRIMARY KEY,
@@ -46,6 +54,7 @@ export async function POST(request: NextRequest) {
       )
     `
     
+    // Create verificationTokens table
     await db.$executeRaw`
       CREATE TABLE IF NOT EXISTS verificationTokens (
         identifier TEXT,
@@ -55,6 +64,7 @@ export async function POST(request: NextRequest) {
       )
     `
     
+    // Create studentProfiles table
     await db.$executeRaw`
       CREATE TABLE IF NOT EXISTS studentProfiles (
         id TEXT PRIMARY KEY,
@@ -73,7 +83,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Database initialization error:', error)
     return NextResponse.json(
-      { error: 'Failed to initialize database', details: error.message },
+      { error: 'Failed to initialize database', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     )
   }
