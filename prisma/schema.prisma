@@ -1,48 +1,90 @@
+// 1. Specifies the Prisma Client generator
 generator client {
   provider = "prisma-client-js"
 }
 
+// 2. Defines the database connection (Corrected to postgresql)
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
+// 3. NextAuth Required Model: Account
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+// 4. NextAuth Required Model: Session
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+// 5. User Model (Updated for NextAuth)
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id             String          @id @default(cuid())
+  name           String?
+  email          String?         @unique
+  emailVerified  DateTime?
+  image          String?
+  accounts       Account[]
+  sessions       Session[]
   studentProfile StudentProfile?
-  preferences    LearningPreferences?
-  
+
   @@map("users")
 }
 
+// 6. NextAuth Required Model: VerificationToken
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+// 7. Student Profile Model (Updated to match your PRD)
 model StudentProfile {
-  id        String @id @default(cuid())
-  userId    String @unique
-  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  country   String
-  grade     String
-  
+  id                  String   @id @default(cuid())
+  userId              String   @unique
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  skillProfile        Json? // Tracks mastery and confidence
+  learningPreferences Json? // Stores style and tutor persona
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("student_profiles")
 }
 
-model LearningPreferences {
-  id           String @id @default(cuid())
-  userId       String @unique
-  user         User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
-  style        String @default("simplified")
-  tutorName    String @default("Professor Khalid")
-  tutorGender  String @default("male")
-  
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+// 8. Curriculum Model (Based on your Supabase table)
+model Curriculum {
+  id          String   @id @default(cuid())
+  countryCode String
+  data        Json // Stores the full JSON curriculum structure
+  createdAt   DateTime @default(now())
 
-  @@map("learning_preferences")
+  @@map("curriculums")
 }
