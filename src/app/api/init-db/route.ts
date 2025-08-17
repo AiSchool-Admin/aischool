@@ -11,10 +11,10 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    console.log('Starting database initialization...')
+    console.log('Starting database initialization with SQLite...')
     
     // Ensure data directory exists
-    const dataDir = join(process.cwd(), 'data')
+    const dataDir = '/opt/render/project/data'
     try {
       await mkdir(dataDir, { recursive: true })
       console.log('Data directory created/verified:', dataDir)
@@ -22,27 +22,24 @@ export async function POST(request: NextRequest) {
       console.log('Data directory already exists or error creating it:', error.message)
     }
     
-    // Import Prisma dynamically to avoid potential import issues
-    const { PrismaClient } = await import('@prisma/client')
+    const dbPath = '/opt/render/project/data/aischool.db'
+    console.log('Using database path:', dbPath)
     
-    // Use the correct database URL for Render
-    const db = new PrismaClient({
-      log: ['query'],
-      datasources: {
-        db: {
-          url: 'file:/opt/render/project/data/aischool.db'
-        }
-      }
+    // Import SQLite dynamically
+    const sqlite3 = await import('sqlite3')
+    const { open } = await import('sqlite')
+    
+    // Open database connection
+    const db = await open({
+      filename: dbPath,
+      driver: sqlite3.default.Database
     })
     
-    // Test database connection
-    console.log('Testing database connection...')
-    await db.$executeRaw`SELECT 1`
     console.log('Database connection successful')
     
     // Create tables
     console.log('Creating users table...')
-    await db.$executeRaw`
+    await db.exec(`
       CREATE TABLE IF NOT EXISTS users (
         id TEXT PRIMARY KEY,
         name TEXT,
@@ -53,10 +50,10 @@ export async function POST(request: NextRequest) {
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
       )
-    `
+    `)
     
     console.log('Creating accounts table...')
-    await db.$executeRaw`
+    await db.exec(`
       CREATE TABLE IF NOT EXISTS accounts (
         id TEXT PRIMARY KEY,
         userId TEXT,
@@ -71,30 +68,30 @@ export async function POST(request: NextRequest) {
         id_token TEXT,
         session_state TEXT
       )
-    `
+    `)
     
     console.log('Creating sessions table...')
-    await db.$executeRaw`
+    await db.exec(`
       CREATE TABLE IF NOT EXISTS sessions (
         id TEXT PRIMARY KEY,
         sessionToken TEXT UNIQUE,
         userId TEXT,
         expires DATETIME
       )
-    `
+    `)
     
     console.log('Creating verificationTokens table...')
-    await db.$executeRaw`
+    await db.exec(`
       CREATE TABLE IF NOT EXISTS verificationTokens (
         identifier TEXT,
         token TEXT,
         expires DATETIME,
         PRIMARY KEY (identifier, token)
       )
-    `
+    `)
     
     console.log('Creating studentProfiles table...')
-    await db.$executeRaw`
+    await db.exec(`
       CREATE TABLE IF NOT EXISTS studentProfiles (
         id TEXT PRIMARY KEY,
         userId TEXT UNIQUE,
@@ -105,9 +102,9 @@ export async function POST(request: NextRequest) {
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
       )
-    `
+    `)
 
-    await db.$disconnect()
+    await db.close()
     
     console.log('Database initialization completed successfully')
     return NextResponse.json({ message: 'Database initialized successfully' })
