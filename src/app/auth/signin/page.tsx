@@ -1,8 +1,8 @@
 // src/app/auth/signin/page.tsx
 'use client'
 
-import { signIn, getProviders } from 'next-auth/react'
-import { useState, useEffect } from 'next-auth/react'
+import { signIn, getProviders } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function SignIn() {
   const [providers, setProviders] = useState(null)
