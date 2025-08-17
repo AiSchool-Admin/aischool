@@ -2,7 +2,7 @@
 'use client'
 
 import { signIn, getProviders } from 'next-auth/react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'next-auth/react'
 
 export default function SignIn() {
   const [providers, setProviders] = useState(null)
@@ -30,7 +30,7 @@ export default function SignIn() {
               <div key={provider.name}>
                 <button
                   onClick={() => signIn(provider.id, { callbackUrl: '/' })}
-                  className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-text-gray-700 bg-white hover:bg-gray-50"
+                  className="w-full flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
                 >
                   Sign in with {provider.name}
                 </button>
