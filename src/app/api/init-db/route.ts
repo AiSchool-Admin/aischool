@@ -6,7 +6,7 @@ export async function POST(request: NextRequest) {
   try {
     console.log('Starting database initialization...')
     
-    // Create users table
+    // Simple table creation without foreign keys first
     await db.$executeRaw`
       CREATE TABLE IF NOT EXISTS users (
         id TEXT PRIMARY KEY,
@@ -19,9 +19,7 @@ export async function POST(request: NextRequest) {
         updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
       )
     `
-    console.log('Users table created successfully')
-
-    // Create accounts table
+    
     await db.$executeRaw`
       CREATE TABLE IF NOT EXISTS accounts (
         id TEXT PRIMARY KEY,
@@ -35,25 +33,19 @@ export async function POST(request: NextRequest) {
         token_type TEXT,
         scope TEXT,
         id_token TEXT,
-        session_state TEXT,
-        FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE
+        session_state TEXT
       )
     `
-    console.log('Accounts table created successfully')
-
-    // Create sessions table
+    
     await db.$executeRaw`
       CREATE TABLE IF NOT EXISTS sessions (
         id TEXT PRIMARY KEY,
         sessionToken TEXT UNIQUE,
         userId TEXT,
-        expires DATETIME,
-        FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE
+        expires DATETIME
       )
     `
-    console.log('Sessions table created successfully')
-
-    // Create verificationTokens table
+    
     await db.$executeRaw`
       CREATE TABLE IF NOT EXISTS verificationTokens (
         identifier TEXT,
@@ -62,9 +54,7 @@ export async function POST(request: NextRequest) {
         PRIMARY KEY (identifier, token)
       )
     `
-    console.log('VerificationTokens table created successfully')
-
-    // Create studentProfiles table
+    
     await db.$executeRaw`
       CREATE TABLE IF NOT EXISTS studentProfiles (
         id TEXT PRIMARY KEY,
@@ -74,11 +64,9 @@ export async function POST(request: NextRequest) {
         interests TEXT,
         learningStyle TEXT,
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-        updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE
+        updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
       )
     `
-    console.log('StudentProfiles table created successfully')
 
     console.log('Database initialization completed successfully')
     return NextResponse.json({ message: 'Database initialized successfully' })
