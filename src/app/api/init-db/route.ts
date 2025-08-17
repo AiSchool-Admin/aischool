@@ -1,4 +1,24 @@
 // src/app/api/init-db/route.ts
+// src/app/api/init-db/route.ts
+import { NextRequest, NextResponse } from 'next/server'
+import { db } from '@/lib/db'
+import { mkdir } from 'fs/promises'
+import { join } from 'path'
+
+export async function POST(request: NextRequest) {
+  try {
+    console.log('Starting database initialization...')
+    
+    // Ensure data directory exists
+    const dataDir = join(process.cwd(), 'data')
+    try {
+      await mkdir(dataDir, { recursive: true })
+      console.log('Data directory created/verified')
+    } catch (error) {
+      console.log('Data directory already exists or error creating it:', error.message)
+    }
+    
+    // Rest of the code...
 import { NextRequest, NextResponse } from 'next/server'
 import { db } from '@/lib/db'
 
