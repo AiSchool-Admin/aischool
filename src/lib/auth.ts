@@ -5,7 +5,6 @@ import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { db } from '@/lib/db'
 
 export const authOptions = {
-  adapter: Prisma-
   adapter: PrismaAdapter(db),
   providers: [
     GoogleProvider({
@@ -18,7 +17,6 @@ export const authOptions = {
   },
   pages: {
     signIn: '/auth/signin',
-    signUp: '/auth/signup',
   },
   callbacks: {
     async jwt({ token, user }) {
