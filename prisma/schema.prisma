@@ -1,16 +1,15 @@
-// 1. Specifies the Prisma Client generator
+// prisma/schema.prisma
 generator client {
   provider = "prisma-client-js"
 }
 
-// 2. Defines the database connection for both client and migrations
+// Use only one datasource block
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL_POOLER") // For the running app (Prisma Client)
-  directUrl = env("DATABASE_URL")      // For migrations (Prisma Migrate)
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
-// 3. NextAuth Required Model: Account
+// NextAuth Required Model: Account
 model Account {
   id                String  @id @default(cuid())
   userId            String
@@ -31,7 +30,7 @@ model Account {
   @@map("accounts")
 }
 
-// 4. NextAuth Required Model: Session
+// NextAuth Required Model: Session
 model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique
@@ -42,7 +41,7 @@ model Session {
   @@map("sessions")
 }
 
-// 5. User Model (Updated for NextAuth)
+// User Model (Updated for NextAuth)
 model User {
   id             String          @id @default(cuid())
   name           String?
@@ -56,7 +55,7 @@ model User {
   @@map("users")
 }
 
-// 6. NextAuth Required Model: VerificationToken
+// NextAuth Required Model: VerificationToken
 model VerificationToken {
   identifier String
   token      String
@@ -66,7 +65,7 @@ model VerificationToken {
   @@map("verification_tokens")
 }
 
-// 7. Student Profile Model (Updated to match your PRD)
+// Student Profile Model
 model StudentProfile {
   id                  String   @id @default(cuid())
   userId              String   @unique
@@ -80,7 +79,7 @@ model StudentProfile {
   @@map("student_profiles")
 }
 
-// 8. Curriculum Model (Based on your Supabase table)
+// Curriculum Model
 model Curriculum {
   id          String   @id @default(cuid())
   countryCode String

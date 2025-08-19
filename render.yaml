@@ -12,17 +12,17 @@ services:
       - key: PORT
         value: 10000
       - key: DATABASE_URL
-        value: postgresql://postgres.uqiclcedddxqjdnpjkak:LsKG341AbA4j4l2x@aws-1-eu-central-1.pooler.supabase.com:6543/postgres?sslmode=require
+        sync: false  # Set in Render dashboard
       - key: NEXTAUTH_SECRET
-        value: 6ANjOO6g2K5lsftI7iswLdcY0NgK2jfL
+        sync: false  # Set in Render dashboard
       - key: NEXTAUTH_URL
         value: https://aischool-u7d7.onrender.com
       - key: PGSSLMODE
         value: require
       - key: GOOGLE_CLIENT_ID
-        value: 110955726580-s6mtv8pf7l17j306i9l0rh6mgipqkt0r.apps.googleusercontent.com
+        sync: false  # Set in Render dashboard
       - key: GOOGLE_CLIENT_SECRET
-        value: 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
+        sync: false  # Set in Render dashboard
       - key: NEXT_PUBLIC_SITE_URL
         value: https://aischool-u7d7.onrender.com
     healthCheck:
