@@ -3,10 +3,11 @@ generator client {
   provider = "prisma-client-js"
 }
 
-// 2. Defines the database connection (Corrected to postgresql)
+// 2. Defines the database connection for both client and migrations
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL_POOLER") // For the running app (Prisma Client)
+  directUrl = env("DATABASE_URL")      // For migrations (Prisma Migrate)
 }
 
 // 3. NextAuth Required Model: Account
