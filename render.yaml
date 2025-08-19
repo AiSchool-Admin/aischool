@@ -2,21 +2,32 @@ services:
   - type: web
     name: aischool
     env: node
-    plan: free # Or your preferred plan
+    plan: free
     buildCommand: npm run render-build
     preDeployCommand: npm run db:migrate
     startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
-      # DATABASE_URL should be set as a secret in the Render dashboard
+      - key: PORT
+        value: 10000
       - key: DATABASE_URL
-        sync: false
-      # NEXTAUTH_SECRET should be set as a secret in the Render dashboard
+        value: postgresql://postgres.uqiclcedddxqjdnpjkak:LsKG341AbA4j4l2x@aws-1-eu-central-1.pooler.supabase.com:6543/postgres?sslmode=require
       - key: NEXTAUTH_SECRET
-        sync: false
+        value: 6ANjOO6g2K5lsftI7iswLdcY0NgK2jfL
       - key: NEXTAUTH_URL
         value: https://aischool-u7d7.onrender.com
-      # PGSSLMODE is required for secure connections to Supabase
       - key: PGSSLMODE
         value: require
+      - key: GOOGLE_CLIENT_ID
+        value: 110955726580-s6mtv8pf7l17j306i9l0rh6mgipqkt0r.apps.googleusercontent.com
+      - key: GOOGLE_CLIENT_SECRET
+        value: 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
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://aischool-u7d7.onrender.com
+    healthCheck:
+      path: /api/health
+      initialDelaySeconds: 60
+      timeoutSeconds: 10
+      periodSeconds: 30
+      failureThreshold: 5
