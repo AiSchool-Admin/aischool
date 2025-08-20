@@ -1,0 +1,204 @@
+{
+  "country": "Egypt",
+  "grade": "Secondary One",
+  "subjects": [
+    {
+      "subjectId": "PHY-01",
+      "name": "Physics",
+      "units": [
+        {
+          "unitId": "PHY-01-U1",
+          "name": "Physical Quantities and Units of Measurement",
+          "chapters": [
+            {
+              "chapterId": "PHY-01-U1-C1",
+              "name": "Chapter One: Introduction to Measurement",
+              "lessons": [
+                {
+                  "lessonId": "PHY-01-U1-C1-L1",
+                  "name": "Physical Measurement",
+                  "objectives": [
+                    "Understand the importance of measurement in physics",
+                    "Distinguish between fundamental and derived quantities",
+                    "Identify the seven fundamental quantities and their SI units"
+                  ],
+                  "dependencies": [],
+                  "keywords": [
+                    "Measurement",
+                    "International System",
+                    "Fundamental Quantities",
+                    "SI Units",
+                    "Physical Quantities"
+                  ]
+                },
+                {
+                  "lessonId": "PHY-01-U1-C1-L2",
+                  "name": "SI Units and Prefixes",
+                  "objectives": [
+                    "Learn the seven SI base units",
+                    "Understand metric prefixes and their symbols",
+                    "Convert between different units using prefixes"
+                  ],
+                  "dependencies": ["PHY-01-U1-C1-L1"],
+                  "keywords": [
+                    "SI Units",
+                    "Base Units",
+                    "Metric Prefixes",
+                    "Unit Conversion",
+                    "Kilogram",
+                    "Meter",
+                    "Second"
+                  ]
+                }
+              ]
+            },
+            {
+              "chapterId": "PHY-01-U1-C2",
+              "name": "Chapter Two: Measurement Instruments and Errors",
+              "lessons": [
+                {
+                  "lessonId": "PHY-01-U1-C2-L1",
+                  "name": "Measurement Instruments",
+                  "objectives": [
+                    "Identify common measurement instruments",
+                    "Understand precision and accuracy in measurements",
+                    "Learn proper techniques for using measuring instruments"
+                  ],
+                  "dependencies": ["PHY-01-U1-C1-L1"],
+                  "keywords": [
+                    "Measuring Instruments",
+                    "Precision",
+                    "Accuracy",
+                    "Ruler",
+                    "Vernier Caliper",
+                    "Micrometer"
+                  ]
+                },
+                {
+                  "lessonId": "PHY-01-U1-C2-L2",
+                  "name": "Measurement Errors and Uncertainty",
+                  "objectives": [
+                    "Understand types of measurement errors",
+                    "Calculate absolute and relative errors",
+                    "Express measurements with appropriate uncertainty"
+                  ],
+                  "dependencies": ["PHY-01-U1-C2-L1"],
+                  "keywords": [
+                    "Measurement Error",
+                    "Systematic Error",
+                    "Random Error",
+                    "Absolute Error",
+                    "Relative Error",
+                    "Uncertainty"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "unitId": "PHY-01-U2",
+          "name": "Motion in One Dimension",
+          "chapters": [
+            {
+              "chapterId": "PHY-01-U2-C1",
+              "name": "Chapter Three: Position, Displacement, and Distance",
+              "lessons": [
+                {
+                  "lessonId": "PHY-01-U2-C1-L1",
+                  "name": "Position and Coordinate Systems",
+                  "objectives": [
+                    "Define position in physics",
+                    "Understand coordinate systems and reference frames",
+                    "Use coordinate systems to describe position"
+                  ],
+                  "dependencies": ["PHY-01-U1-C1-L2"],
+                  "keywords": [
+                    "Position",
+                    "Coordinate System",
+                    "Reference Frame",
+                    "Origin",
+                    "Axis"
+                  ]
+                },
+                {
+                  "lessonId": "PHY-01-U2-C1-L2",
+                  "name": "Displacement and Distance",
+                  "objectives": [
+                    "Distinguish between displacement and distance",
+                    "Calculate displacement and distance for various motions",
+                    "Understand vector nature of displacement"
+                  ],
+                  "dependencies": ["PHY-01-U2-C1-L1"],
+                  "keywords": [
+                    "Displacement",
+                    "Distance",
+                    "Vector",
+                    "Scalar",
+                    "Path Length"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subjectId": "MATH-01",
+      "name": "Mathematics",
+      "units": [
+        {
+          "unitId": "MATH-01-U1",
+          "name": "Algebra and Functions",
+          "chapters": [
+            {
+              "chapterId": "MATH-01-U1-C1",
+              "name": "Chapter One: Linear Functions",
+              "lessons": [
+                {
+                  "lessonId": "MATH-01-U1-C1-L1",
+                  "name": "Introduction to Functions",
+                  "objectives": [
+                    "Define what a function is",
+                    "Identify domain and range of functions",
+                    "Use function notation correctly"
+                  ],
+                  "dependencies": [],
+                  "keywords": [
+                    "Function",
+                    "Domain",
+                    "Range",
+                    "Function Notation",
+                    "Input",
+                    "Output"
+                  ]
+                },
+                {
+                  "lessonId": "MATH-01-U1-C1-L2",
+                  "name": "Linear Functions and Graphs",
+                  "objectives": [
+                    "Identify linear functions",
+                    "Graph linear functions",
+                    "Find slope and y-intercept",
+                    "Write equations of linear functions"
+                  ],
+                  "dependencies": ["MATH-01-U1-C1-L1"],
+                  "keywords": [
+                    "Linear Function",
+                    "Slope",
+                    "Y-intercept",
+                    "Graph",
+                    "Equation",
+                    "Straight Line"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
