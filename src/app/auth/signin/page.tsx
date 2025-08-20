@@ -1,11 +1,16 @@
 // src/app/auth/signin/page.tsx
 'use client'
 
-import { signIn, getProviders } from 'react'
+import { signIn, getProviders } from 'next-auth/react'
 import { useState, useEffect } from 'react'
 
+interface Provider {
+  id: string
+  name: string
+}
+
 export default function SignIn() {
-  const [providers, setProviders] = useState(null)
+  const [providers, setProviders] = useState<Record<string, Provider> | null>(null)
 
   useEffect(() => {
     const getAuthProviders = async () => {
@@ -26,7 +31,7 @@ export default function SignIn() {
         
         <div className="mt-8 space-y-4">
           {providers &&
-            Object.values(providers).map((provider) => (
+            Object.values(providers).map((provider: Provider) => (
               <div key={provider.name}>
                 <button
                   onClick={() => signIn(provider.id, { callbackUrl: '/' })}
