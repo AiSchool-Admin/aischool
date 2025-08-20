@@ -1,0 +1,219 @@
+{
+  "country": "United States",
+  "grade": "Grade 9",
+  "subjects": [
+    {
+      "subjectId": "MATH-09",
+      "name": "Algebra I",
+      "units": [
+        {
+          "unitId": "MATH-09-U1",
+          "name": "Linear Equations and Inequalities",
+          "chapters": [
+            {
+              "chapterId": "MATH-09-U1-C1",
+              "name": "Chapter 1: Solving Linear Equations",
+              "lessons": [
+                {
+                  "lessonId": "MATH-09-U1-C1-L1",
+                  "name": "One-Step Equations",
+                  "objectives": [
+                    "Solve one-step equations using addition and subtraction",
+                    "Solve one-step equations using multiplication and division",
+                    "Check solutions by substitution"
+                  ],
+                  "dependencies": [],
+                  "keywords": [
+                    "Linear Equation",
+                    "Variable",
+                    "Solution",
+                    "Inverse Operations",
+                    "Substitution"
+                  ]
+                },
+                {
+                  "lessonId": "MATH-09-U1-C1-L2",
+                  "name": "Two-Step Equations",
+                  "objectives": [
+                    "Solve two-step equations",
+                    "Apply the order of operations in reverse",
+                    "Solve equations with variables on both sides"
+                  ],
+                  "dependencies": ["MATH-09-U1-C1-L1"],
+                  "keywords": [
+                    "Two-Step Equation",
+                    "Order of Operations",
+                    "Distributive Property",
+                    "Like Terms",
+                    "Coefficient"
+                  ]
+                },
+                {
+                  "lessonId": "MATH-09-U1-C1-L3",
+                  "name": "Multi-Step Equations",
+                  "objectives": [
+                    "Solve multi-step equations with parentheses",
+                    "Use the distributive property to solve equations",
+                    "Solve equations with fractions and decimals"
+                  ],
+                  "dependencies": ["MATH-09-U1-C1-L2"],
+                  "keywords": [
+                    "Multi-Step Equation",
+                    "Distributive Property",
+                    "Fractions",
+                    "Decimals",
+                    "Clearing Denominators"
+                  ]
+                }
+              ]
+            },
+            {
+              "chapterId": "MATH-09-U1-C2",
+              "name": "Chapter 2: Linear Inequalities",
+              "lessons": [
+                {
+                  "lessonId": "MATH-09-U1-C2-L1",
+                  "name": "Solving Linear Inequalities",
+                  "objectives": [
+                    "Solve one-step and multi-step inequalities",
+                    "Graph solutions on a number line",
+                    "Write solutions in interval notation"
+                  ],
+                  "dependencies": ["MATH-09-U1-C1-L3"],
+                  "keywords": [
+                    "Linear Inequality",
+                    "Number Line",
+                    "Interval Notation",
+                    "Solution Set",
+                    "Boundary Point"
+                  ]
+                },
+                {
+                  "lessonId": "MATH-09-U1-C2-L2",
+                  "name": "Compound Inequalities",
+                  "objectives": [
+                    "Solve compound inequalities with 'and'",
+                    "Solve compound inequalities with 'or'",
+                    "Graph compound inequalities"
+                  ],
+                  "dependencies": ["MATH-09-U1-C2-L1"],
+                  "keywords": [
+                    "Compound Inequality",
+                    "Intersection",
+                    "Union",
+                    "And Statement",
+                    "Or Statement"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "unitId": "MATH-09-U2",
+          "name": "Functions and Graphing",
+          "chapters": [
+            {
+              "chapterId": "MATH-09-U2-C1",
+              "name": "Chapter 3: Introduction to Functions",
+              "lessons": [
+                {
+                  "lessonId": "MATH-09-U2-C1-L1",
+                  "name": "Relations and Functions",
+                  "objectives": [
+                    "Identify relations and functions",
+                    "Use the vertical line test",
+                    "Find domain and range of functions"
+                  ],
+                  "dependencies": [],
+                  "keywords": [
+                    "Relation",
+                    "Function",
+                    "Domain",
+                    "Range",
+                    "Vertical Line Test"
+                  ]
+                },
+                {
+                  "lessonId": "MATH-09-U2-C1-L2",
+                  "name": "Function Notation",
+                  "objectives": [
+                    "Use function notation",
+                    "Evaluate functions",
+                    "Interpret function values in context"
+                  ],
+                  "dependencies": ["MATH-09-U2-C1-L1"],
+                  "keywords": [
+                    "Function Notation",
+                    "f(x)",
+                    "Input",
+                    "Output",
+                    "Function Value"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "subjectId": "SCI-09",
+      "name": "Physical Science",
+      "units": [
+        {
+          "unitId": "SCI-09-U1",
+          "name": "Matter and Energy",
+          "chapters": [
+            {
+              "chapterId": "SCI-09-U1-C1",
+              "name": "Chapter 1: Properties of Matter",
+              "lessons": [
+                {
+                  "lessonId": "SCI-09-U1-C1-L1",
+                  "name": "Physical and Chemical Properties",
+                  "objectives": [
+                    "Distinguish between physical and chemical properties",
+                    "Identify examples of physical and chemical changes",
+                    "Understand the difference between intensive and extensive properties"
+                  ],
+                  "dependencies": [],
+                  "keywords": [
+                    "Physical Property",
+                    "Chemical Property",
+                    "Physical Change",
+                    "Chemical Change",
+                    "Intensive Property",
+                    "Extensive Property"
+                  ]
+                },
+                {
+                  "lessonId": "SCI-09-U1-C1-L2",
+                  "name": "States of Matter",
+                  "objectives": [
+                    "Describe the three main states of matter",
+                    "Explain phase transitions",
+                    "Understand the kinetic molecular theory"
+                  ],
+                  "dependencies": ["SCI-09-U1-C1-L1"],
+                  "keywords": [
+                    "Solid",
+                    "Liquid",
+                    "Gas",
+                    "Phase Transition",
+                    "Melting",
+                    "Freezing",
+                    "Vaporization",
+                    "Condensation",
+                    "Kinetic Molecular Theory"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+

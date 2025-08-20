@@ -47,8 +47,8 @@ export default function SetupDB() {
           setDetails(data)
         }
       }
-    } catch (error) {
-      setMessage('Error: ' + error.message)
+    } catch (error: any) {
+      setMessage('Error: ' + (error?.message || 'Unknown error'))
       setDetails('Network error or API not responding')
       console.error('Fetch error:', error)
     } finally {

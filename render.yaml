@@ -2,32 +2,21 @@ services:
   - type: web
     name: aischool
     env: node
-    plan: free
+    plan: free # Or your preferred plan
     buildCommand: npm run render-build
     preDeployCommand: npm run db:migrate
     startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 10000
+      # DATABASE_URL should be set as a secret in the Render dashboard
       - key: DATABASE_URL
-        sync: false  # Set in Render dashboard
+        sync: false
+      # NEXTAUTH_SECRET should be set as a secret in the Render dashboard
       - key: NEXTAUTH_SECRET
-        sync: false  # Set in Render dashboard
+        sync: false
       - key: NEXTAUTH_URL
         value: https://aischool-u7d7.onrender.com
+      # PGSSLMODE is required for secure connections to Supabase
       - key: PGSSLMODE
         value: require
-      - key: GOOGLE_CLIENT_ID
-        sync: false  # Set in Render dashboard
-      - key: GOOGLE_CLIENT_SECRET
-        sync: false  # Set in Render dashboard
-      - key: NEXT_PUBLIC_SITE_URL
-        value: https://aischool-u7d7.onrender.com
-    healthCheck:
-      path: /api/health
-      initialDelaySeconds: 60
-      timeoutSeconds: 10
-      periodSeconds: 30
-      failureThreshold: 5
